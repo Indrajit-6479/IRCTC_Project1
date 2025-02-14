@@ -30,5 +30,26 @@ public class UserBookingService {
         return foundUser.isPresent();
     }
 
+    public Boolean signUp(User user1) {
+        try {
+            userList.add(user1);
+            saveUserListToFile();
+            return Boolean.TRUE;
+        } catch (IOException e) {
+            return Boolean.FALSE;
+        }
+    }
 
+    private void saveUserListToFile() throws IOException {
+        File userFile = new File(USER_PATH);
+        objectMapper.writeValue(userFile, userList);
+    }
+
+//    public void fetchBooking(){
+//        user.printTicket();
+//    }
+//
+//    public Boolean cancelBooking(String ticketId){
+//        user.getTicketsBooked().stream().filter(t -> t.getTicketId().equalsIgnoreCase(ticketId))
+//    }
 }

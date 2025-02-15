@@ -45,10 +45,10 @@ public class UserBookingService {
         objectMapper.writeValue(userFile, userList);
     }
 
-//    public void fetchBooking(){
-//        user.printTicket();
-//    }
-//
+    public void fetchBooking(){
+        user.printTicket();
+    }
+
 //    public Boolean cancelBooking(String ticketId){
 //        user.getTicketsBooked().stream().filter(t -> t.getTicketId().equalsIgnoreCase(ticketId))
 //    }

@@ -24,6 +24,16 @@ public class UserBookingService {
         });
     }
 
+    public UserBookingService() throws IOException {
+        loadUser();
+    }
+
+    public void loadUser() throws IOException {
+        File users = new File(USER_PATH);
+        userList = objectMapper.readValue(users, new TypeReference<List<User>>() {
+        });
+    }
+
     public Boolean loginService() {
         Optional<User> foundUser = userList.stream().filter(user1 -> {
             return user1.getName().equalsIgnoreCase(user.getName()) && UserServiceUtil.checkPassword(user.getPassword(), user1.getHashPassword());

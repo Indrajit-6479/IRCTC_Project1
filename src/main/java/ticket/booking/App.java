@@ -46,6 +46,25 @@ public class App {
                     userBookingService.signUp(userToSignup);
                 }
                 case 2 -> {
+                    System.out.println("Enter the User Name to login");
+                    String useNameToLogin = sc.next();
+                    System.out.println("Enter the password to login");
+                    String passwordToLogin = sc.next();
+                    User userToLogin = new User(useNameToLogin, passwordToLogin,
+                            UserServiceUtil.hashPassword(passwordToLogin), new ArrayList<>(),
+                            UUID.randomUUID().toString());
+                    try {
+                        userBookingService = new UserBookingService(userToLogin);
+                    }catch (IOException ex) {
+                        System.err.printf("Exception in main %s", ex.getMessage());
+                        return;
+                    }
+                }
+                case 3 -> {
+                    System.out.println("Fetching your bookings");
+                    userBookingService.fetchBooking();
+                }
+                case 4 -> {
 
                 }
             }

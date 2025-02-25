@@ -55,7 +55,7 @@ public class App {
                             UUID.randomUUID().toString());
                     try {
                         userBookingService = new UserBookingService(userToLogin);
-                    }catch (IOException ex) {
+                    } catch (IOException ex) {
                         System.err.printf("Exception in main %s", ex.getMessage());
                         return;
                     }

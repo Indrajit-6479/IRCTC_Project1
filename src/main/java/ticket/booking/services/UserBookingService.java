@@ -12,14 +12,14 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class UserBookingService {
-    private static final String USER_PATH = System.getProperty("user.dir") + "/localDB/users.json";
+    private static final String USER_DB_PATH = System.getProperty("user.dir") + "/localDB/users.json";
     private User user;
     private List<User> userList;
     private ObjectMapper objectMapper = new ObjectMapper();
 
     public UserBookingService(User user) throws IOException {
         this.user = user;
-        File users = new File(USER_PATH);
+        File users = new File(USER_DB_PATH);
         userList = objectMapper.readValue(users, new TypeReference<List<User>>() {
         });
     }
@@ -29,7 +29,7 @@ public class UserBookingService {
     }
 
     public void loadUser() throws IOException {
-        File users = new File(USER_PATH);
+        File users = new File(USER_DB_PATH);
         userList = objectMapper.readValue(users, new TypeReference<List<User>>() {
         });
     }
@@ -52,7 +52,7 @@ public class UserBookingService {
     }
 
     private void saveUserListToFile() throws IOException {
-        File userFile = new File(USER_PATH);
+        File userFile = new File(USER_DB_PATH);
         objectMapper.writeValue(userFile, userList);
     }
 
